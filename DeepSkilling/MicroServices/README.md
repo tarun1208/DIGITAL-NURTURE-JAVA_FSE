@@ -1,152 +1,366 @@
-# 🚀 Microservices with Spring Boot
+# 🚀 MicroServices – Spring Boot & Spring Cloud Learning Repository
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=openjdk" />
-  <img src="https://img.shields.io/badge/Spring_Boot-3.x-brightgreen?style=for-the-badge&logo=springboot" />
-  <img src="https://img.shields.io/badge/Microservices-Architecture-blue?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Maven-Build-red?style=for-the-badge&logo=apachemaven" />
-  <img src="https://img.shields.io/badge/REST-API-success?style=for-the-badge" />
+
+![Java](https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=for-the-badge&logo=springboot)
+![Spring Cloud](https://img.shields.io/badge/Spring%20Cloud-2023-green?style=for-the-badge)
+![Maven](https://img.shields.io/badge/Maven-Build-red?style=for-the-badge&logo=apachemaven)
+![REST API](https://img.shields.io/badge/REST-API-blue?style=for-the-badge)
+![Eureka](https://img.shields.io/badge/Netflix-Eureka-purple?style=for-the-badge)
+
 </p>
 
 ---
 
 # 📖 Overview
 
-This repository contains my hands-on practice and implementation of **Microservices Architecture** using **Spring Boot**. The projects focus on developing independent, loosely coupled, and scalable services that communicate through REST APIs while following enterprise software development best practices.
+This folder contains my hands-on implementation of **Enterprise Microservices Architecture** using **Spring Boot**, **Spring Cloud**, and **Netflix Eureka** as part of the **Digital Nurture Java Full Stack Engineering Program**.
 
-The objective of this module is to understand how modern distributed systems are designed, developed, tested, and deployed in real-world enterprise applications.
+Instead of developing a monolithic application, these exercises demonstrate how enterprise applications are split into **small, independent services** that communicate through REST APIs while remaining scalable, maintainable, and loosely coupled.
 
----
+The repository covers:
 
-# 🎯 Learning Objectives
-
-- Understand Microservices Architecture
-- Develop RESTful Web Services
-- Build Independent Spring Boot Services
-- Implement Service-to-Service Communication
-- Learn Distributed System Design
-- Apply Layered Architecture
-- Improve Scalability and Maintainability
-- Follow Enterprise Development Standards
+- Spring Boot Microservices
+- Spring Cloud
+- API Gateway
+- Eureka Discovery Server
+- REST API Development
+- Inter-Service Communication
+- Distributed Architecture
 
 ---
 
-# 🛠️ Technologies Used
+# 📂 Folder Structure
+
+```text
+MicroServices
+│
+├── microservices
+│
+├── microservices2
+│
+├── microservices-api-gateway
+│   ├── account
+│   ├── loan
+│   ├── greet-service
+│   ├── api-gateway
+│   ├── composite-service
+│   ├── eureka-discovery-server
+│   └── README.md
+│
+└── microservices-exercises
+```
+
+Each folder focuses on a different microservice concept and can be executed independently.
+
+---
+
+# 🏗 Architecture
+
+```text
+                  Client
+                     │
+                     ▼
+              API Gateway (9090)
+                     │
+      ┌──────────────┼──────────────┐
+      ▼              ▼              ▼
+ Account Service   Loan Service   Greet Service
+      │
+      └──────────────┬──────────────┘
+                     ▼
+         Eureka Discovery Server (8761)
+```
+
+---
+
+# 📚 Modules Included
+
+## 📌 microservices
+
+Practice exercises demonstrating the fundamentals of Spring Boot microservice development.
+
+---
+
+## 📌 microservices2
+
+Additional microservice implementations covering REST APIs and enterprise backend development.
+
+---
+
+## 📌 microservices-api-gateway
+
+Complete Spring Cloud implementation consisting of:
+
+- Eureka Discovery Server
+- API Gateway
+- Account Service
+- Loan Service
+- Composite Service
+- Greet Service
+
+This module demonstrates service discovery, routing, and inter-service communication.
+
+---
+
+## 📌 microservices-exercises
+
+Additional practical exercises covering Spring Cloud and Microservices concepts.
+
+---
+
+# 🛠 Technologies Used
 
 | Technology | Purpose |
 |------------|---------|
 | Java 17 | Programming Language |
-| Spring Boot | Microservice Development |
-| Spring Web | REST API Development |
-| Maven | Dependency Management |
-| REST APIs | Communication Between Services |
+| Spring Boot | Backend Development |
+| Spring Cloud | Distributed Systems |
+| Netflix Eureka | Service Discovery |
+| Spring Cloud Gateway | API Gateway |
+| Maven | Build Automation |
+| REST APIs | Service Communication |
 | JSON | Data Exchange |
-| Postman | API Testing |
-| Git & GitHub | Version Control |
+| Git | Version Control |
 
 ---
 
-# 📂 Repository Structure
+# ⚙ Prerequisites
+
+Install the following software before running the projects.
+
+- Java 17+
+- Maven 3.8+
+- Git
+- IntelliJ IDEA / Eclipse / VS Code
+
+Verify installation
+
+```bash
+java -version
+
+mvn -version
+
+git --version
+```
+
+---
+
+# 📥 Clone Repository
+
+```bash
+git clone https://github.com/tarun1208/DIGITAL-NURTURE-JAVA_FSE.git
+
+cd DIGITAL-NURTURE-JAVA_FSE/DeepSkilling/MicroServices
+```
+
+---
+
+# 🔨 Build Project
+
+Each project is an independent Maven project.
+
+Example:
+
+```bash
+cd microservices
+
+mvn clean install
+```
+
+or
+
+```bash
+cd microservices-api-gateway/account
+
+mvn clean install
+```
+
+---
+
+# ▶ Run Spring Boot Applications
+
+Start any module using
+
+```bash
+mvn spring-boot:run
+```
+
+or package first
+
+```bash
+mvn clean package
+
+java -jar target/*.jar
+```
+
+---
+
+# 📋 Common Maven Commands
+
+Compile
+
+```bash
+mvn compile
+```
+
+Run Tests
+
+```bash
+mvn test
+```
+
+Package
+
+```bash
+mvn package
+```
+
+Install
+
+```bash
+mvn install
+```
+
+Clean
+
+```bash
+mvn clean
+```
+
+Spring Boot Run
+
+```bash
+mvn spring-boot:run
+```
+
+---
+
+# 🌐 API Gateway Project
+
+The `microservices-api-gateway` module contains six independent Spring Boot applications.
+
+| Service | Port | Description |
+|----------|------|-------------|
+| Eureka Discovery Server | **8761** | Service Registry |
+| Account Service | **8080** | Account Details API |
+| Loan Service | **8081** | Loan Details API |
+| Greet Service | **8080** | Greeting Service |
+| API Gateway | **9090** | Request Routing |
+| Composite Service | Configurable | Combines multiple services |
+
+> **Note:** `account` and `greet-service` both use **8080** by default. Run only one at a time or change the port.
+
+---
+
+# ▶ Recommended Startup Order
+
+Start the services in the following order.
+
+### 1️⃣ Eureka Discovery Server
+
+```bash
+cd eureka-discovery-server
+
+mvn spring-boot:run
+```
+
+---
+
+### 2️⃣ Account Service
+
+```bash
+cd account
+
+mvn spring-boot:run
+```
+
+---
+
+### 3️⃣ Loan Service
+
+```bash
+cd loan
+
+mvn spring-boot:run
+```
+
+---
+
+### 4️⃣ Greet Service
+
+```bash
+cd greet-service
+
+mvn spring-boot:run
+```
+
+---
+
+### 5️⃣ API Gateway
+
+```bash
+cd api-gateway
+
+mvn spring-boot:run
+```
+
+---
+
+# 🔍 Verify Eureka Registration
+
+Open
 
 ```
-MicroServices
-│
-├── Exercise 1
-├── Exercise 2
-├── Exercise 3
-├── Exercise 4
-├── Exercise 5
-├── ...
-└── Additional Practice
+http://localhost:8761
 ```
 
-Each exercise focuses on a different aspect of enterprise microservice development.
+Registered services should include
+
+- ACCOUNT-SERVICE
+- LOAN-SERVICE
+- GREET-SERVICE
+- API-GATEWAY
 
 ---
 
-# 🚀 Features Implemented
+# 🧪 Test APIs
 
-✅ REST API Development
+### Direct Service Calls
 
-✅ CRUD Operations
+Account Service
 
-✅ Layered Architecture
-
-✅ Controller Layer
-
-✅ Service Layer
-
-✅ Repository Layer
-
-✅ Dependency Injection
-
-✅ Spring Boot Configuration
-
-✅ Exception Handling
-
-✅ JSON Request & Response
-
-✅ Maven Project Management
-
----
-
-# 📚 Concepts Covered
-
-### ✔ Introduction to Microservices
-
-- Monolithic vs Microservices
-- Advantages of Microservices
-- Independent Deployment
-- Service Isolation
-- Scalability
-
----
-
-### ✔ RESTful Web Services
-
-- GET
-- POST
-- PUT
-- DELETE
-- Request Mapping
-- Path Variables
-- Request Parameters
-
----
-
-### ✔ Spring Boot
-
-- Auto Configuration
-- Starter Dependencies
-- Dependency Injection
-- Bean Management
-- Application Configuration
-
----
-
-### ✔ API Development
-
-- REST Controllers
-- Request Body
-- Response Entity
-- HTTP Status Codes
-- JSON Serialization
-
----
-
-### ✔ Project Structure
-
+```bash
+curl http://localhost:8080/accounts/00987987973432
 ```
-Controller
-      │
-      ▼
-Service
-      │
-      ▼
-Repository
-      │
-      ▼
-Database / Data Source
+
+Loan Service
+
+```bash
+curl http://localhost:8081/loans/H00987987972342
+```
+
+Greeting Service
+
+```bash
+curl http://localhost:8080/greet
+```
+
+---
+
+### Through API Gateway
+
+```bash
+curl http://localhost:9090/account-service/accounts/00987987973432
+```
+
+```bash
+curl http://localhost:9090/loan-service/loans/H00987987972342
+```
+
+```bash
+curl http://localhost:9090/greet-service/greet
 ```
 
 ---
@@ -154,81 +368,64 @@ Database / Data Source
 # 📈 Skills Demonstrated
 
 - Enterprise Java Development
-- Spring Boot Development
-- REST API Design
-- Layered Architecture
-- Object-Oriented Programming
-- Dependency Injection
-- Clean Code Practices
-- API Testing
-- Maven Project Management
+- Spring Boot
+- Spring Cloud
+- Microservices Architecture
+- API Gateway
+- Eureka Discovery
+- REST API Development
+- Service-to-Service Communication
+- Maven Build Management
+- Distributed Systems
 - Backend Development
 
 ---
 
-# 💡 Real-World Applications
+# 🎯 Learning Outcomes
 
-The concepts implemented in this repository are widely used in enterprise applications such as:
+Through these projects, I gained practical experience in:
 
-- Banking Systems
-- E-Commerce Platforms
-- Healthcare Applications
-- Online Payment Systems
-- Food Delivery Applications
-- Inventory Management
-- ERP Systems
-- Cloud-Based Services
-
----
-
-# 🏆 Key Learning Outcomes
-
-After completing this module, I gained practical experience in:
-
-- Designing scalable backend applications
-- Building RESTful APIs
-- Developing independent services
-- Structuring enterprise-level Spring Boot projects
-- Writing clean and maintainable code
-- Understanding distributed application architecture
+- Designing distributed applications
+- Building RESTful microservices
+- Configuring API Gateway
+- Registering services with Eureka
+- Developing scalable backend systems
+- Managing multiple Spring Boot applications
+- Following enterprise development practices
 
 ---
 
-# 🎯 Recruiter Highlights
+# 🌟 Recruiter Highlights
 
-✔ Strong understanding of Microservices Architecture
+✔ Enterprise Spring Boot Projects
 
-✔ Practical Spring Boot Development Experience
+✔ Practical Spring Cloud Experience
 
-✔ REST API Implementation
+✔ API Gateway Implementation
 
-✔ Enterprise Backend Development Skills
+✔ Netflix Eureka Service Discovery
 
-✔ Clean Code & Layered Architecture
+✔ REST API Development
 
-✔ Maven Project Management
+✔ Distributed System Design
 
-✔ Object-Oriented Programming
+✔ Maven Multi-Module Projects
 
 ✔ Production-Oriented Project Structure
 
+✔ Clean Code & Layered Architecture
+
 ---
 
-# 📌 Future Enhancements
+# 🚀 Future Enhancements
 
-- Spring Cloud Config
-- Eureka Service Registry
-- API Gateway
 - OpenFeign Client
-- Circuit Breaker (Resilience4j)
+- Spring Cloud Config Server
 - Docker
 - Kubernetes
 - Kafka Messaging
-- Distributed Tracing
-- Monitoring with Prometheus & Grafana
+- JWT Authentication
+- Resilience4j Circuit Breaker
+- Prometheus & Grafana Monitoring
 
 ---
-
----
-
-## ⭐ If you found this repository helpful, consider giving it a Star!
